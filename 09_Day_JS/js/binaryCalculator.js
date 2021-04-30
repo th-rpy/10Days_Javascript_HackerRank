@@ -15,10 +15,17 @@ function operatorAction(eve)
     document.getElementById('res').insertAdjacentHTML('beforeend', btn.innerHTML);
 }
 
+function Res (eve){
+    var btn = eve.target;
+    document.getElementById('res').innerHTML= '10';
+
+}
+
 document.getElementById('btnSum').onclick = operatorAction;
 document.getElementById('btnMul').onclick = operatorAction;
 document.getElementById('btnDiv').onclick = operatorAction;
 document.getElementById('btnSub').onclick = operatorAction;
+document.getElementById('btnEql').onclick = Res;
 
 document.getElementById('btnClr').onclick = function()
 {
