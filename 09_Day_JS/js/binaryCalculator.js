@@ -14,10 +14,39 @@ function operatorAction(eve)
     // Add the inner html for the operator buttons into the results field
     document.getElementById('res').insertAdjacentHTML('beforeend', btn.innerHTML);
 }
-
+const Dig2Bin  = (a) =>{
+    let n = a;
+    let binList = []
+    while (n!=0){
+      binList.unshift(n%2)
+      n = parseInt(n/2)
+    }
+    return binList.reduce((a, b)=> a + b, '')
+  }
 function Res (eve){
     var btn = eve.target;
-    document.getElementById('res').innerHTML= '10';
+    let ab = document.getElementById('res').innerText;
+    if (ab.includes('+')){
+        let a = ab.split('+')[0];
+        let b = ab.split('+')[1];
+        document.getElementById('res').innerHTML= Dig2Bin((parseInt(a, 2) + parseInt(b, 2)))
+    }
+    if (ab.includes('-')){
+        let a = ab.split('-')[0];
+        let b = ab.split('-')[1];
+        document.getElementById('res').innerHTML= Dig2Bin((parseInt(a, 2) - parseInt(b, 2)))
+    }
+    if (ab.includes('*')){
+        let a = ab.split('*')[0];
+        let b = ab.split('*')[1];
+        document.getElementById('res').innerHTML=  Dig2Bin((parseInt(a, 2) * parseInt(b, 2)))
+    }
+
+    if (ab.includes('/')){
+        let a = ab.split('/')[0];
+        let b = ab.split('/')[1];
+        document.getElementById('res').innerHTML= Dig2Bin((parseInt(a, 2) / parseInt(b, 2)))
+    }
 
 }
 
